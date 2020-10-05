@@ -13,11 +13,15 @@
   <br>
   <ul>
 
-
-  {% for m in result_html%} <!-- this indicates a for-loop in html -->
+<p>Recommendations via NMF:</p>
+  {% for m in nmf%} <!-- this indicates a for-loop in html -->
     <li>{{ m }}</li>
     {% endfor %}
-
+    <br>
+    <p>Recommendations via similar users:</p>
+      {% for m in cosim%} <!-- this indicates a for-loop in html -->
+        <li>{{ m }}</li>
+        {% endfor %}
 
   </ul>
   <br>

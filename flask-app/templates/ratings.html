@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="static/css/styles.css">
   <title>Lemongrass Movie Recommender</title>
   <link href="static/css/jquery.flexdatalist.min.css" rel="stylesheet" type="text/css">
@@ -10,9 +11,7 @@
 
 
 <body>
-
-  </div>
-  <div class="container">
+  <div class="main-container">
     <form action="/recommendations">
 
       {% for m in movies_html %}
@@ -22,9 +21,8 @@
 
             <br>
             {% endfor %}
-          </div>
 
-          <input type="submit" value = "Proceed to suggestions">
+          <br><input type="submit" value = "Proceed to suggestions" class="btn btn-primary">
         </form>
 <a href='/index'>Forgot some movies?</a>
 

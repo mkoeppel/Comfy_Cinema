@@ -44,7 +44,8 @@ def recommender():
     user_input_ratings = request.form.to_dict()
     user_input = zip(user_input_movies, user_input_ratings.values())
     result = calculate_best_movies(user_input)
-    return render_template('recommendations.html', result_html=result)
+    result2 = similar_users_recommender(user_input)
+    return render_template('recommendations.html', nmf=result, cosim=result2)
 
 if __name__ == '__main__':
     # whatever occurs AFTER this line is executed when we run 'python application.py'
