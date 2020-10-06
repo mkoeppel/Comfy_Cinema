@@ -12,13 +12,13 @@ app = Flask(__name__)
 # We launch this file from the terminal to start the app
 
 @app.route('/')
-@app.route('/index')  # whatever the function below this, route it to the path
+@app.route('/index', methods=['POST', 'GET'])  # whatever the function below this, route it to the path
 def index():
     movies=[]
     return render_template('index.html')
 
 
-@app.route('/ratings', methods = ['POST','GET'])
+@app.route('/ratings', methods=['POST', 'GET'])
 def ratings():
     user_input = dict(request.form)              # copied from github to make it worl
     print(user_input)
@@ -33,19 +33,19 @@ def ratings():
     with open(pkl_filename, 'wb') as file:
         pickle.dump(movies, file)
     print(movies)
-    return render_template('ratings.html', movies_html=movies.items())
+    return render_template('ratings.html', movie_list=movies.items())
 
 
-
-@app.route('/recommendations')
+@app.route('/recommendations', methods=['GET', 'POST'])
 def recommender():
     with open("tmp.pkl", 'rb') as file:
         user_input_movies = pickle.load(file)
-    user_input_ratings = request.form.to_dict()
-    user_input = zip(user_input_movies, user_input_ratings.values())
-    result = calculate_best_movies(user_input)
-    result2 = similar_users_recommender(user_input)
-    return render_template('recommendations.html', nmf=result, cosim=result2)
+    user_input_ratings = request.args.get('rating_values')
+    #user_input_ratings = request.form.to_dict()
+    #user_input = zip(user_input_movies, user_input_ratings.values())
+    #result = calculate_best_movies(user_input)
+    #result2 = similar_users_recommender(user_input)
+    return render_template('recommendations.html', nmf=user_input_movies, cosim=user_input_ratings)
 
 if __name__ == '__main__':
     # whatever occurs AFTER this line is executed when we run 'python application.py'
