@@ -18,10 +18,10 @@ with open("nmf_model.pkl", 'rb') as file:
     m = pickle.load(file)
 P = m.components_
 
-def calculate_best_movies(result_html):
+def calculate_best_movies(input):
     ''' doc '''
     column_names = ['title', 'rating']
-    user_input = pd.DataFrame(result_html, columns=column_names)
+    user_input = pd.DataFrame(input, columns=column_names)
 
     r_true = DF.pivot(index='userId', columns='movieId', values='rating')
     r_true.fillna(2.5, inplace=True)
@@ -37,12 +37,11 @@ def calculate_best_movies(result_html):
     result = MOVIES_DF.sort_values('recom', ascending=False)['title'].head(5)
     return result
 
-def similar_users_recommender(result_html):
+def similar_users_recommender(movies, ratings):
     ''' doc '''
-    column_names = ['title', 'rating']
-    user_input = pd.DataFrame(result_html, columns=column_names)
-
-    user_ratings = pd.merge(MOVIES_DF, user_input, left_on='title', right_on='title', how='left')
+    user = {'title' : movies, 'rating' : ratings}
+    user = pd.DataFrame(user)
+    user_ratings = pd.merge(MOVIES_DF, user, left_on='title', right_on='title', how='left')
     query = user_ratings['rating']
     query = np.array(query)
 

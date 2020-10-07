@@ -41,12 +41,12 @@ def ratings():
 def recommender():
     with open("tmp.pkl", 'rb') as file:
         user_input_movies = pickle.load(file)
+    user_input_movies = list(user_input_movies)
     user_input_ratings = request.args.getlist('rating_values')
-    #user_input_ratings = request.form.to_dict()
-    user_input = list(zip(user_input_movies, user_input_ratings))
+    user_input_ratings = [int(x) for x in user_input_ratings]
     #result = calculate_best_movies(user_input)
-    result2 = similar_users_recommender(user_input)
-    return render_template('recommendations.html', nmf=user_input, cosim=result2)
+    result2 = similar_users_recommender(user_input_movies, user_input_ratings)
+    return render_template('recommendations.html', nmf=user_input_movies, cosim=result2)
 
 if __name__ == '__main__':
     # whatever occurs AFTER this line is executed when we run 'python application.py'
