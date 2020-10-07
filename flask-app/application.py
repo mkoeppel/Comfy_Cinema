@@ -3,6 +3,7 @@ from recommender import calculate_best_movies
 from recommender import similar_users_recommender
 from recommender import movieId_to_title
 import pickle5 as pickle
+import pandas as pd
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -40,12 +41,12 @@ def ratings():
 def recommender():
     with open("tmp.pkl", 'rb') as file:
         user_input_movies = pickle.load(file)
-    user_input_ratings = request.args.get('rating_values')
+    user_input_ratings = request.args.getlist('rating_values')
     #user_input_ratings = request.form.to_dict()
-    #user_input = zip(user_input_movies, user_input_ratings.values())
+    user_input = list(zip(user_input_movies, user_input_ratings))
     #result = calculate_best_movies(user_input)
-    #result2 = similar_users_recommender(user_input)
-    return render_template('recommendations.html', nmf=user_input_movies, cosim=user_input_ratings)
+    result2 = similar_users_recommender(user_input)
+    return render_template('recommendations.html', nmf=user_input, cosim=result2)
 
 if __name__ == '__main__':
     # whatever occurs AFTER this line is executed when we run 'python application.py'
