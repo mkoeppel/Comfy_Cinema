@@ -18,16 +18,16 @@ with open("nmf_model.pkl", 'rb') as file:
     m = pickle.load(file)
 P = m.components_
 
-def calculate_best_movies(input):
+def calculate_best_movies(movies, ratings):
     ''' doc '''
-    column_names = ['title', 'rating']
-    user_input = pd.DataFrame(input, columns=column_names)
+    user = {'title' : movies, 'rating' : ratings}
+    user = pd.DataFrame(user)
 
     r_true = DF.pivot(index='userId', columns='movieId', values='rating')
     r_true.fillna(2.5, inplace=True)
 
 
-    user_ratings = pd.merge(MOVIES_DF, user_input, left_on='title', right_on='title', how='left')
+    user_ratings = pd.merge(MOVIES_DF, user, left_on='title', right_on='title', how='left')
     new_user = user_ratings['rating'].fillna(2.5)
     new_u = np.array(new_user).reshape(1, -1)
     profile = m.transform(new_u)
