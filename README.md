@@ -3,8 +3,8 @@
 ## This movie recommender helps you select the movie, you're really gonna enjoy watching next!
 ### It works best, if you select 5 or more movies you liked (or hated) and give them some ratings from 0-5.
 
-As output you get two different kinds of suggestions:
-  1: This is based on an unsupervised non-negative matrix factorization approach (NMF).
+As output you get two different kinds of suggestions: \
+  1: This is based on an unsupervised non-negative matrix factorization approach (NMF). \
   2: The second set of suggestions come from a cosime-similarity a.k.a. collaborative filtering approach.
 
 Both give you 5 different suggestions, as you will find out the only sometimes overlap.
