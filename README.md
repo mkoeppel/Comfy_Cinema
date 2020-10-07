@@ -12,5 +12,5 @@ Both give you 5 different suggestions, as you will find out the only sometimes o
 This runs on the movielens dataset (as of now on it's small version 'ml-latest-small' with approximatley 100 k ratings). It can be found here:
 https://grouplens.org/datasets/movielens/
 
-To make the recommender work git clone the repository to your computer, navigate into the flask-app, enter 'python application.py' in the terminal and copy 'http://127.0.0.1:5000/' into the address-field of your browser
-We are planning to put this onto a running server in the near future and will provide the url here as well
+To make the recommender work git clone the repository to your computer, navigate into the flask-app, enter 'python application.py' in the terminal and copy 'http://127.0.0.1:5000/' into the address-field of your browser. \
+We are planning to put this onto a running server in the near future and will provide the url here as well.
