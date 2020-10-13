@@ -1,5 +1,5 @@
 # Movie Recommender
-a python and sklearn based program that recommends movies based on user input
+a python and sklearn based program
 
 ## This movie recommender helps you select the movie, you're really gonna enjoy watching next!
 ### It works best, if you select 5 or more movies you liked (or hated) and give them some ratings from 0-5.
