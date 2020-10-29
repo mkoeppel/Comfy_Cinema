@@ -3,20 +3,19 @@ import numpy as np
 from sklearn.decomposition import NMF
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
-import pickle5 as pickle
+import joblib as jb
 
-MOVIES = pd.read_csv('ml-latest-small/movies.csv')
-RATINGS = pd.read_csv('ml-latest-small/ratings.csv')
+
+MOVIES = pd.read_csv('./gettingstarted/ml-latest-small/movies.csv')
+RATINGS = pd.read_csv('./gettingstarted/ml-latest-small/ratings.csv')
 DF = pd.merge(RATINGS, MOVIES, left_on='movieId', right_on='movieId')
 
 MIDS = RATINGS['movieId'].unique()
 MIDS = pd.DataFrame(MIDS)
 MOVIES_DF = pd.merge(MIDS, MOVIES, left_on=0, right_on='movieId')
 
-# better:
-with open("nmf_model.pkl", 'rb') as file:
-    m = pickle.load(file)
-P = m.components_
+model_jb = jb.load('./gettingstarted/nmf_model2.joblib')
+P = model_jb.components_
 
 def calculate_best_movies(movies, ratings):
     '''
@@ -30,13 +29,10 @@ def calculate_best_movies(movies, ratings):
     user = {'title' : movies, 'rating' : ratings}
     user = pd.DataFrame(user)
 
-    r_true = DF.pivot(index='userId', columns='movieId', values='rating')
-    r_true.fillna(2.5, inplace=True)
-
     user_ratings = pd.merge(MOVIES_DF, user, left_on='title', right_on='title', how='left')
     new_user = user_ratings['rating'].fillna(2.5)
     new_u = np.array(new_user).reshape(1, -1)
-    profile = m.transform(new_u)
+    profile = model_jb.transform(new_u)
     result = np.dot(profile, P)
     MOVIES_DF['recom'] = result.T
 
@@ -47,12 +43,12 @@ def calculate_best_movies(movies, ratings):
 
 def similar_users_recommender(movies, ratings):
     '''
-    uses a cosime-similarity matrix to predict movies most likely to fit with the input movies and ratings
+    uses a cosine-similarity matrix to predict movies most likely to fit with the input movies and ratings
 
     input:
         the movies and ratings provided on the index- and ratings-html sites
     output:
-        5 new movies the user likely to enjoy
+        5 new movies the user probably likes
     '''
     user = {'title' : movies, 'rating' : ratings}
     user = pd.DataFrame(user)
