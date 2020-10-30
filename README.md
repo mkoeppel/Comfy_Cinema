@@ -13,13 +13,11 @@ Both give you 5 different suggestions, as you will find out they only sometimes 
 This runs on the movielens dataset (as of now on it's small version 'ml-latest-small' with approximatley 100 k ratings). It can be found here:
 https://grouplens.org/datasets/movielens/
 
-To make the recommender work git clone the repository to your computer, navigate into the flask-app, enter 'python app.py' in the terminal and copy 'http://127.0.0.1:5000/' into the address-field of your browser. \
 
-It also runs on a heroku-server:
+It now runs on a heroku-server:
 
 https://movie-couch.herokuapp.com/
 
 ### to do:
 add user-comments for the suggested movies
 scale up database for better recommendations
-add impressum
