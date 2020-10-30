@@ -19,5 +19,5 @@ It now runs on a heroku-server:
 https://movie-couch.herokuapp.com/
 
 ### to do:
-add user-comments for the suggested movies
+add user-comments for the suggested movies \
 scale up database for better recommendations
