@@ -6,15 +6,15 @@ import pandas as pd
 import joblib as jb
 
 
-MOVIES = pd.read_csv('./gettingstarted/ml-latest-small/movies.csv')
-RATINGS = pd.read_csv('./gettingstarted/ml-latest-small/ratings.csv')
+MOVIES = pd.read_csv('./ml-latest-small/movies.csv')
+RATINGS = pd.read_csv('./ml-latest-small/ratings.csv')
 DF = pd.merge(RATINGS, MOVIES, left_on='movieId', right_on='movieId')
 
 MIDS = RATINGS['movieId'].unique()
 MIDS = pd.DataFrame(MIDS)
 MOVIES_DF = pd.merge(MIDS, MOVIES, left_on=0, right_on='movieId')
 
-model_jb = jb.load('./gettingstarted/nmf_model2.joblib')
+model_jb = jb.load('./nmf_model2.joblib')
 P = model_jb.components_
 
 def calculate_best_movies(movies, ratings):
