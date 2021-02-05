@@ -18,6 +18,9 @@ It now runs on a heroku-server:
 
 https://movie-couch.herokuapp.com/
 
+### used tech:
+[!alt text](https://github.com/mkoeppel/Comfy_Cinema/blob/master/Tech_stack_comfy_cinema.png)
+
 ### to do:
 add user-comments for the suggested movies \
 scale up database for better recommendations
