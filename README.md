@@ -7,7 +7,7 @@ As output you get two different kinds of suggestions: \
   1: This is based on an unsupervised non-negative matrix factorization approach (NMF). \
   2: The second set of suggestions come from a cosine-similarity a.k.a. collaborative filtering approach.
 
-Both give you 5 different suggestions, as you will find out they only sometimes overlap.
+Both give you 5 different suggestions, as you will find out they only sometimes overlap (this started as a SPICED bootcamp project and was later on extended to a fully functional online-recommender).
 
 ### used tech:
 ![alt text](https://github.com/mkoeppel/Comfy_Cinema/blob/master/Tech_stack_comfy_cinema.png)
