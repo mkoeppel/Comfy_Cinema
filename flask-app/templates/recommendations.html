@@ -9,6 +9,7 @@
     <link href="static/jquery.flexdatalist.min.css" rel="stylesheet" type="text/css">
 
 </head>
+
 <body>
   <div class="main-container">
   <h1>Here are your recommended movies:</h1>
@@ -16,15 +17,15 @@
   <ul>
 
 <p>Recommendations via NMF:</p>
-  {% for m in nmf%} <!-- this indicates a for-loop in html -->
-    <li>{{ m }}</li>
+  {% for id in nmf_img%} <!-- this indicates a for-loop in html -->
+    <img src="{{id}}" alt="missing image" style="float:right;">
     {% endfor %}
     <br>
+    <br>
     <p>Recommendations via similar users:</p>
-      {% for m in cosim%} <!-- this indicates a for-loop in html -->
-        <li>{{ m }}</li>
+      {% for id in cos_img%}
+        <img src="{{id}}" alt="missing image" style="float:right;">
         {% endfor %}
-
   </ul>
   <br>
   <a href='/index'>Take me back home!</a>
