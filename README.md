@@ -24,5 +24,6 @@ https://movie-couch.herokuapp.com/
 
 
 ### to do:
+add omdb-API to get recommendations as posters \
 add user-comments for the suggested movies \
 scale up database for better recommendations
