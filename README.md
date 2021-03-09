@@ -9,7 +9,7 @@ As output you get two different kinds of suggestions: \
 
 Both give you 3 different suggestions, as you will find out they only sometimes overlap (this started as a SPICED bootcamp project and was improved afterwards). \
 Movie suggestions are now displayed as posters taken from the omdb-API:
-![alt text](https://github.com/mkoeppel/Comfy_Cinema/blob/master/matrix.omdbapi.jpeg)
+![alt text](https://github.com/mkoeppel/Comfy_Cinema/blob/master/matrix.omdbapi.jpg)
 The required API-Key was obtained from https://www.omdbapi.com/ and stored in a config-file, from where it is imported by the recommender script.
 
 ### used tech:
