@@ -7,7 +7,10 @@ As output you get two different kinds of suggestions: \
   1: This is based on an unsupervised non-negative matrix factorization approach (NMF). \
   2: The second set of suggestions come from a cosine-similarity a.k.a. collaborative filtering approach.
 
-Both give you 5 different suggestions, as you will find out they only sometimes overlap (this started as a SPICED bootcamp project and was improved afterwards).
+Both give you 3 different suggestions, as you will find out they only sometimes overlap (this started as a SPICED bootcamp project and was improved afterwards). \
+Movie suggestions are now displayed as posters taken from the omdb-API:
+![alt text](https://github.com/mkoeppel/Comfy_Cinema/blob/master/matrix.omdbapi.jpeg)
+The required API-Key was obtained from https://www.omdbapi.com/ and stored in a config-file, from where it is imported by the recommender script.
 
 ### used tech:
 ![alt text](https://github.com/mkoeppel/Comfy_Cinema/blob/master/Tech_stack_comfy_cinema.png)
@@ -24,6 +27,6 @@ https://movie-couch.herokuapp.com/
 
 
 ### to do:
-add omdb-API to get recommendations as posters \
+~~add omdb-API to get recommendations as posters~~ \
 add user-comments for the suggested movies \
 scale up database for better recommendations
